@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bam-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bam-api
+  template:
+    metadata:
+      labels:
+        app: bam-api
+    spec:
+      containers:
+      - name: bam-api
+        image: us-docker.pkg.dev/byui-scrum-team11am-mst/bam-api/api-tests
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: ".5"
+            memory: "500Mi"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+            scheme: HTTP
+          failureThreshold: 30
+          periodSeconds: 10
+          timeoutSeconds: 10
+
