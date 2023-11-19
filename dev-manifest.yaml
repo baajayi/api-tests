@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: bam-api
-        image: us-docker.pkg.dev/byui-scrum-team-11am-mst/bam-api
+        image: us-docker.pkg.dev/byui-scrum-team-11am-mst/bam-api/api-tests
         ports:
         - containerPort: 3000
         resources:
